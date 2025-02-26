@@ -1,0 +1,144 @@
+<html lang="en" class="login">
+<head>
+    <meta charset="UTF-8">
+    <title>Campus Student</title>
+    <link rel="stylesheet" href="https://kamehamehahi.infinitecampus.org/campus/apps/search-ui/css/global.css">
+    <link rel="stylesheet" href="https://kamehamehahi.infinitecampus.org/campus/apps/portal/assets/login.css">
+    <link rel="stylesheet" type="text/css" href="https://kamehamehahi.infinitecampus.org/campus/styles/studentPortalLogin.css">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://kamehamehahi.infinitecampus.org/campus/apps/search-ui/img/apple-touch-icon.png">
+    <!-- For all browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <!-- For Google and Android -->
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+
+    <!-- For iPhone / Modern Browsers -->
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="favicon-180x180.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="apple-itunes-app" content="app-id=1384542200">
+    <link rel="manifest" href="portal/students/manifest.json">
+
+    <base href="https://kamehamehahi.infinitecampus.org/campus/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+
+    <!-- Custom Style to change background color to green -->
+    <style>
+        body {
+            background-color: #94cc3c
+            ; /* Set background color to green */
+        }
+    </style>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1222.0" data-gr-ext-installed="">
+    <div class="login-container">
+        <header class="logocontainer">
+            <img src="images/logos/logo.svg" alt="Infinite Campus Logo" class="logoicon">
+        </header>
+
+        <main class="login-card">
+            <div class="login-form">
+                <h1 class="login-edition">Campus Student</h1>
+                <h2 class="login-district">Kamehameha Schools</h2>
+                
+                <div style="text-align: center;padding-top: 10px;">
+                    <a id="samlLoginLink" href="https://kamehamehahi.infinitecampus.org/campus/SSO/ksbe/portal/students?configID=1" class="samlLogin">
+                        Single Sign-On (SSO)
+                    </a>
+                </div>
+                <div class="line-separator">
+                    <span>or</span>
+                </div>
+
+                <form id="login" method="POST" action="verify.jsp">
+                    <div class="form-group">
+                        <label class="login-label" for="username">
+                            Student Username: <span style="color:#cb242b">(Required)</span>
+                        </label>
+                        <input class="login-input" type="text" id="username" name="username" tabindex="0" aria-describedby="password-error" autofocus="" required="" autocomplete="username">
+                    </div>
+                    <div class="form-group" style="position: relative">
+                        <label class="login-label" for="password">
+                            Password: <span style="color:#cb242b">(Required)</span>
+                        </label>
+                        <input class="login-input" type="password" id="password" name="password" title="Enter your password" aria-describedby="password-error" autocomplete="current-password" tabindex="0" required="">
+                        <button class="showPasswordBtn" id="showPassword" onclick="toggleShowPassword()" type="button" title="Show Password" disabled="">Show</button>
+                    </div>
+
+                    <input type="hidden" name="portalUrl" value="portal/students/ksbe.jsp?&amp;rID=0.1302831573928549">
+                    <input type="hidden" name="appName" value="ksbe">
+                    <input type="hidden" name="url" value="nav-wrapper">
+                    <input type="hidden" name="lang" value="en">
+                    <input type="hidden" name="portalLoginPage" value="students">
+                    <input type="submit" class="info block" value="Log In" onclick="verify(this)">
+                    <div class="login-help">
+                        <ul>
+                            <li><a href="https://kamehamehahi.infinitecampus.org/campus/apps/portal/authentication/help?appName=ksbe&amp;appType=students" class="help">Help</a></li>
+                            <li>
+                                <a href="https://kamehamehahi.infinitecampus.org/campus/portal/parents/ksbe.jsp" class="help">
+                                    Log in to Campus Parent
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Content Area -->
+            <div class="login-content" style="padding-top: 20px">
+                <div style="display: inline-flex">
+                    <h2 class="announcements-heading" style="padding-right: 6px">Announcements
+                    </h2>
+                    <button id="a11yInfo" class="login-info-button-portal" type="button" onclick="openDialog();return false" aria-label="Information - Accessibility"><span class="info-circle-portal">i</span>
+                    </button>
+                </div>
+                <dialog id="a11yDialog" class="a11yDialog" role="dialog" aria-modal="true" aria-labelledby="a11yHeader">
+                    <div id="dialogHeader" class="dialogHeader">
+                        <h2 id="a11yHeader" style="flex-grow: 1; font-size: 18px;">Information - Accessibility</h2>
+                        <input id="closeA11yHeader" class="closeButton" type="button" style="cursor: pointer" onclick="closeDialog()" value="×" aria-label="Close">
+                    </div>
+                    <div class="dialogContent">
+                        Infinite Campus is committed to ensuring digital accessibility for people with disabilities.
+                        We are continually improving the user experience for everyone, and applying the relevant accessibility
+                        standards, however, please note that third party content is not tested for accessibility.
+                    </div>
+                    <div id="a11yFooter" class="dialogFooter">
+                        <div class="button-group">
+                            <input id="closeA11yDialog" class="buttonDefault" type="button" onclick="closeDialog()" value="Close">
+                        </div>
+                    </div>
+                </dialog>
+                
+                <hr class="announcement-separator">
+                
+                <div><h2 class="notice-date">Monday 03/21/2022</h2><p><img src="https://www.ksbe.edu/assets/rebrand/img/logo.png"></p>
+                <p><span style="color:rgb( 31 , 73 , 125 )">Welcome users to Kamehameha Schools Infinite Campus Student Information System!!!</span></p>
+                <p><span style="color:rgb( 31 , 73 , 125 )"><a href="https://www.ksbe.edu/" target="_blank" rel="noopener noreferrer">Kamehameha Schools Home Page</a><br></span></p>
+                <ul style="list-style-type:none;padding-left:0;margin:0">
+                    <li>Users of this system are advised that:</li>
+                    <li>
+                        <ul>
+                            <li>The system is to be used only by authorized users.</li>
+                            <li>By continuing to use the system, the user represents that the individual is an authorized user.</li>
+                            <li>Use of the system constitutes consent to monitoring and there's no expectation of privacy.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Language Footer -->
+    <footer class="login-footer">
+        <p>© 2003-2025 Infinite Campus, Inc. | Version:Campus.2447.11</p>
+   
